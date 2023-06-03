@@ -35,3 +35,7 @@ ListNode * find_value_in_list(ListNode * root, int val)
 	}
 	return nullptr;
 }
+
+ListNode* delete_node_after(ListNode*, int) {
+	return nullptr;
+}
