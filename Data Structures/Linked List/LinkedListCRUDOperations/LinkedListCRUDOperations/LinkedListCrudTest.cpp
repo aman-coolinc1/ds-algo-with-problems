@@ -85,3 +85,9 @@ TEST_F(LinkedListCRUDOperationsTest, search_for_value_in_empty_list) {
 	ListNode* found_value = find_value_in_list(root, 6);
 	EXPECT_EQ(found_value, nullptr);
 }
+
+TEST_F(LinkedListCRUDOperationsTest, delete_node_in_front) {
+	ListNode* new_node = add_node_after(root, create_node(1));
+	ListNode* new_node_1 = add_node_after(new_node, create_node(2));
+	ListNode* root = delete_node_after(nullptr, 1);
+}
