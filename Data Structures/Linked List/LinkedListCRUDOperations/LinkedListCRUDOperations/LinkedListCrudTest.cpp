@@ -81,7 +81,8 @@ TEST_F(LinkedListSearchOperationsTest, search_for_non_existent_value_in_list) {
 	EXPECT_EQ(found_value, nullptr);
 }
 
-TEST_F(LinkedListCRUDOperationsTest, search_for_value_in_empty_list) {
+TEST_F(LinkedListSearchOperationsTest, search_for_value_in_empty_list) {
+	root = nullptr;
 	ListNode* found_value = find_value_in_list(root, 6);
 	EXPECT_EQ(found_value, nullptr);
 }
@@ -115,4 +116,16 @@ TEST_F(LinkedListDeleteOperationsTest, delete_node_in_end) {
 	root = delete_node(root, find_value_in_list(root, 2));
 	EXPECT_EQ(root->data, 1);
 	EXPECT_EQ(root->next->next->next, nullptr);
+}
+
+TEST_F(LinkedListDeleteOperationsTest, delete_node_in_empty_list) {
+	ListNode *single_node = nullptr;
+	single_node = delete_node(single_node, find_value_in_list(root, 1));
+	EXPECT_EQ(single_node, nullptr);
+}
+
+TEST_F(LinkedListDeleteOperationsTest, delete_node_in_list_with_1_node) {
+	ListNode *single_node = create_node(1);
+	single_node = delete_node(single_node, find_value_in_list(single_node, 1));
+	EXPECT_EQ(single_node, nullptr);
 }
