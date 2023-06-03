@@ -36,6 +36,20 @@ ListNode * find_value_in_list(ListNode * root, int val)
 	return nullptr;
 }
 
-ListNode* delete_node_after(ListNode*, int) {
-	return nullptr;
+ListNode* delete_node(ListNode* root,ListNode *node) {
+	ListNode *curr = root,*prev = nullptr;
+	while (curr) {
+		if (curr == node) {
+			if (prev == nullptr) {
+				root = curr->next;
+			}
+			else {
+				prev->next = prev->next->next;
+			}
+			break;
+		}
+		prev = curr;
+		curr = curr->next;
+	}
+	return root;
 }

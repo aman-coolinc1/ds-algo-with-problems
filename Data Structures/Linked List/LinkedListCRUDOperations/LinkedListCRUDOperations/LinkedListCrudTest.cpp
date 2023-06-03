@@ -11,9 +11,9 @@ public:
 	virtual void TearDown() {
 		ListNode *temp = root;
 		while (root) {
-			delete root;
 			root = temp->next;
-			temp = temp->next;
+			delete temp;
+			temp = root;
 		}
 	}
 
@@ -86,9 +86,33 @@ TEST_F(LinkedListCRUDOperationsTest, search_for_value_in_empty_list) {
 	EXPECT_EQ(found_value, nullptr);
 }
 
-TEST_F(LinkedListCRUDOperationsTest, delete_node_in_front) {
-	ListNode* new_node = add_node_after(root, create_node(1));
-	ListNode* new_node_1 = add_node_after(new_node, create_node(2));
-	ListNode* root = delete_node_after(nullptr, 1);
-	EXPECT_EQ(root->data, 2);
+class LinkedListDeleteOperationsTest : public LinkedListCRUDOperationsTest {
+public:
+	virtual void SetUp() {
+		LinkedListCRUDOperationsTest::SetUp();
+		root = add_node_after(root, create_node(1));
+		add_node_after(root, create_node(2));
+		add_node_after(root, create_node(3));
+		add_node_after(root, create_node(4));
+	}
+	virtual void TearDown() {
+		LinkedListCRUDOperationsTest::TearDown();
+	}
+};
+
+TEST_F(LinkedListDeleteOperationsTest, delete_node_in_front) {
+	root = delete_node(root, find_value_in_list(root,1));
+	EXPECT_EQ(root->data, 4);
+}
+
+TEST_F(LinkedListDeleteOperationsTest, delete_node_in_middle) {
+	root = delete_node(root, find_value_in_list(root, 4));
+	EXPECT_EQ(root->data, 1);
+	EXPECT_EQ(root->next->data, 3);
+}
+
+TEST_F(LinkedListDeleteOperationsTest, delete_node_in_end) {
+	root = delete_node(root, find_value_in_list(root, 2));
+	EXPECT_EQ(root->data, 1);
+	EXPECT_EQ(root->next->next->next, nullptr);
 }
