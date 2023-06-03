@@ -31,3 +31,10 @@ TEST_F(LinkedListCRUDOperationsTest, add_node_after_given_empty_list) {
 	ListNode* new_node = add_node_after(root, create_node(1));
 	EXPECT_EQ(new_node->data,1);
 }
+
+TEST_F(LinkedListCRUDOperationsTest, add_node_after_given_node_in_list) {
+	ListNode* new_node = add_node_after(root, create_node(1));
+	ListNode* new_node_1 = add_node_after(new_node, create_node(2));
+	EXPECT_NE(new_node_1, nullptr);
+	EXPECT_EQ(new_node_1, new_node->next);
+}
