@@ -90,4 +90,5 @@ TEST_F(LinkedListCRUDOperationsTest, delete_node_in_front) {
 	ListNode* new_node = add_node_after(root, create_node(1));
 	ListNode* new_node_1 = add_node_after(new_node, create_node(2));
 	ListNode* root = delete_node_after(nullptr, 1);
+	EXPECT_EQ(root->data, 2);
 }
