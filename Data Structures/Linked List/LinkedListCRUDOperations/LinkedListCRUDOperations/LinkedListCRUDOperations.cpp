@@ -11,5 +11,8 @@ ListNode* add_node_to_front(ListNode* root, ListNode* new_node) {
 }
 
 ListNode* add_node_after(ListNode* root, ListNode* new_node) {
+	if (!root) {
+		return add_node_to_front(root, new_node);
+	}
 	return nullptr;
 }
