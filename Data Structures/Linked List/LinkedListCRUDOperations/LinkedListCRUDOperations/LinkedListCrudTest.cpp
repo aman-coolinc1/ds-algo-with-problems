@@ -27,3 +27,7 @@ TEST_F(LinkedListCRUDOperationsTest, add_node_to_front_of_existing_list) {
 	root = add_node_to_front(root, create_node(2));
 	EXPECT_EQ(root->data, 2);
 }
+
+TEST_F(LinkedListCRUDOperationsTest, add_node_after_given_node) {
+	ListNode* new_node = add_node_after(root, create_node(1));
+}
