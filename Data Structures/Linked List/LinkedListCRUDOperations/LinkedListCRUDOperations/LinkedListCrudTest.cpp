@@ -32,7 +32,7 @@ TEST_F(LinkedListCRUDOperationsTest, add_node_after_given_empty_list) {
 	EXPECT_EQ(new_node->data,1);
 }
 
-TEST_F(LinkedListCRUDOperationsTest, add_node_after_given_node_in_list) {
+TEST_F(LinkedListCRUDOperationsTest, add_node_after_last_node_in_list) {
 	ListNode* new_node = add_node_after(root, create_node(1));
 	ListNode* new_node_1 = add_node_after(new_node, create_node(2));
 	EXPECT_NE(new_node_1, nullptr);
@@ -41,4 +41,13 @@ TEST_F(LinkedListCRUDOperationsTest, add_node_after_given_node_in_list) {
 
 TEST_F(LinkedListCRUDOperationsTest, add_nullptr_after_given_node) {
 	EXPECT_ANY_THROW(add_node_after(root, nullptr));
+}
+
+TEST_F(LinkedListCRUDOperationsTest, add_node_after_given_node_in_middle_of_list) {
+	ListNode* new_node_1 = add_node_after(root, create_node(1));
+	ListNode* new_node_2 = add_node_after(new_node_1, create_node(2));
+	ListNode* new_node_3 = add_node_after(new_node_2, create_node(3));
+	ListNode* new_node_4 = add_node_after(new_node_1, create_node(4));
+	EXPECT_NE(new_node_4, nullptr);
+	EXPECT_EQ(new_node_4, new_node_1->next);
 }
