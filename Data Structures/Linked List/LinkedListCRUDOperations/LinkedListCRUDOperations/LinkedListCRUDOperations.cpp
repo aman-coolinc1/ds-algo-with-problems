@@ -23,3 +23,8 @@ ListNode* add_node_after(ListNode* root, ListNode* new_node) {
 	root->next = new_node;
 	return new_node;
 }
+
+ListNode * find_value_in_list(ListNode * root, int val)
+{
+	return nullptr;
+}
