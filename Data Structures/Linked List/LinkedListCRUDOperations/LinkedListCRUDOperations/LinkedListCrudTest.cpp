@@ -53,15 +53,35 @@ TEST_F(LinkedListCRUDOperationsTest, add_node_after_given_node_in_middle_of_list
 	EXPECT_EQ(new_node_4->next, new_node_2);
 }
 
-TEST_F(LinkedListCRUDOperationsTest, search_for_a_value_in_list) {
-	root = add_node_after(root, create_node(1));
-	add_node_after(root, create_node(2));
-	add_node_after(root, create_node(3));
-	add_node_after(root, create_node(4));
+class LinkedListSearchOperationsTest : public LinkedListCRUDOperationsTest {
+public:
+	virtual void SetUp() {
+		LinkedListCRUDOperationsTest::SetUp();
+		root = add_node_after(root, create_node(1));
+		add_node_after(root, create_node(2));
+		add_node_after(root, create_node(3));
+		add_node_after(root, create_node(4));
+	}
+	virtual void TearDown() {
+		LinkedListCRUDOperationsTest::TearDown();
+	}
+};
+
+TEST_F(LinkedListSearchOperationsTest, search_for_a_value_in_list) {
 	ListNode* found_value = find_value_in_list(root,1);
 	EXPECT_EQ(found_value->data, 1);
 	found_value = find_value_in_list(root, 3);
 	EXPECT_EQ(found_value->data, 3);
 	found_value = find_value_in_list(root, 2);
 	EXPECT_EQ(found_value->data, 2);
+}
+
+TEST_F(LinkedListSearchOperationsTest, search_for_non_existent_value_in_list) {
+	ListNode* found_value = find_value_in_list(root, 6);
+	EXPECT_EQ(found_value, nullptr);
+}
+
+TEST_F(LinkedListCRUDOperationsTest, search_for_value_in_empty_list) {
+	ListNode* found_value = find_value_in_list(root, 6);
+	EXPECT_EQ(found_value, nullptr);
 }
