@@ -54,4 +54,5 @@ TEST_F(LinkedListCRUDOperationsTest, add_node_after_given_node_in_middle_of_list
 
 TEST_F(LinkedListCRUDOperationsTest, search_for_a_value_in_list) {
 	ListNode* found_value = find_value_in_list(root,1);
+	EXPECT_EQ(found_value->data, 1);
 }
