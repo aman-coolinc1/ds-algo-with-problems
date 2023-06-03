@@ -1,12 +1,12 @@
 1. create Node -> check if node added
-2. insert new node in front -> check if node added in front is new node
-3. insert new node in front to an empty list -> new node should be created and become front of list
-4. insert new node in end -> check if node added in end is new node
-5. insert new node in end to an empty list -> new node should be created and become front of list
-6. insert new node in middle after given node -> check if node added after given node is new node
-7. insert new node in middle to an empty list -> new node should be created and become front of list
-8. insert new node in middle after last node in list -> new node should be created and become last of list
-9. If given node is nullptr -> return same root, with error message
+2. insert new node in front to an empty list -> new node should be created and become front of list
+3. insert new node in front -> check if node added in front is new node
+4. insert new node in middle to an empty list -> new node should be created and become front of list
+5. insert new node in middle after given node -> check if node added after given node is new node
+6. If given node is nullptr -> insert node at front
+7. insert new node in middle after last node in list -> new node should be created and become last of list
+8. If new node is nullptr -> return same root, with error message
+9. Create a list with nodes and support these operations-> list should support adding at front,end,middle
 10. delete  node in front -> check if node deleted in front is  not node
 11. delete  node in empty list ->  return nullptr, error msg
 12. delete  node in end -> check if node in end is  not node
@@ -15,5 +15,4 @@
 15. If given node is nullptr -> delete node at front
 16. search for given value -> return address of node with given value
 17. search for given value which occur after n times -> return address of given value
-18. update value of a given node->error string if not exist, update value if exist, return node
-6. Create a list with nodes and support these operations-> list should support adding at front,end,middle,
+18. update value of a given node->error string if not exist, update value if exist, return node 
