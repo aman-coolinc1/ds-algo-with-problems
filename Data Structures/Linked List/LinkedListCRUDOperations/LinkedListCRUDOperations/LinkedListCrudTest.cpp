@@ -40,5 +40,5 @@ TEST_F(LinkedListCRUDOperationsTest, add_node_after_given_node_in_list) {
 }
 
 TEST_F(LinkedListCRUDOperationsTest, add_nullptr_after_given_node) {
-	ListNode* new_node = add_node_after(root, nullptr);
+	EXPECT_ANY_THROW(add_node_after(root, nullptr));
 }
