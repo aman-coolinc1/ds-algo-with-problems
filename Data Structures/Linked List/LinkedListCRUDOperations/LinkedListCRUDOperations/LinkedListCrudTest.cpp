@@ -50,9 +50,18 @@ TEST_F(LinkedListCRUDOperationsTest, add_node_after_given_node_in_middle_of_list
 	ListNode* new_node_4 = add_node_after(new_node_1, create_node(4));
 	EXPECT_NE(new_node_4, nullptr);
 	EXPECT_EQ(new_node_4, new_node_1->next);
+	EXPECT_EQ(new_node_4->next, new_node_2);
 }
 
 TEST_F(LinkedListCRUDOperationsTest, search_for_a_value_in_list) {
+	root = add_node_after(root, create_node(1));
+	add_node_after(root, create_node(2));
+	add_node_after(root, create_node(3));
+	add_node_after(root, create_node(4));
 	ListNode* found_value = find_value_in_list(root,1);
 	EXPECT_EQ(found_value->data, 1);
+	found_value = find_value_in_list(root, 3);
+	EXPECT_EQ(found_value->data, 3);
+	found_value = find_value_in_list(root, 2);
+	EXPECT_EQ(found_value->data, 2);
 }
