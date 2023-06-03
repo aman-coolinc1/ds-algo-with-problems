@@ -6,5 +6,6 @@ ListNode* create_node(int val) {
 }
 
 ListNode* add_node_to_front(ListNode* root, ListNode* new_node) {
-	return nullptr;
+	new_node->next = root;
+	return new_node;
 }
