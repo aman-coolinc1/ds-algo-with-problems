@@ -9,12 +9,11 @@ public:
 		root = nullptr;
 	}
 	virtual void TearDown() {
-		ListNode *temp = root->next;
-		delete root;
-		while (temp) {
-			root = temp;
-			temp = temp->next;
+		ListNode *temp = root;
+		while (root) {
 			delete root;
+			root = temp->next;
+			temp = temp->next;
 		}
 	}
 
