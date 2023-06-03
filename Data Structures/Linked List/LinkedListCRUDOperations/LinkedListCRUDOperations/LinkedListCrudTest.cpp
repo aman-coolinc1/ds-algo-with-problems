@@ -51,3 +51,7 @@ TEST_F(LinkedListCRUDOperationsTest, add_node_after_given_node_in_middle_of_list
 	EXPECT_NE(new_node_4, nullptr);
 	EXPECT_EQ(new_node_4, new_node_1->next);
 }
+
+TEST_F(LinkedListCRUDOperationsTest, search_for_a_value_in_list) {
+	ListNode* found_value = find_value_in_list(1);
+}

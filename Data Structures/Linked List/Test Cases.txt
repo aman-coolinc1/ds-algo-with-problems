@@ -5,7 +5,7 @@
 5. insert new node in middle after given node -> check if node added after given node is new node
 6. If given node is nullptr -> insert node at front
 7. insert new node in middle after last node in list -> new node should be created and become last of list
-8. If new node is nullptr -> return same root, with error message
+8. If new node is nullptr -> throw exception
 9. Create a list with nodes and support these operations-> list should support adding at front,end,middle
 10. delete  node in front -> check if node deleted in front is  not node
 11. delete  node in empty list ->  return nullptr, error msg
