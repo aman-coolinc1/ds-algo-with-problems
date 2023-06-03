@@ -8,3 +8,4 @@ struct ListNode {
 };
 
 ListNode* create_node(int val);
+ListNode* add_node_to_front(ListNode*, ListNode*);
