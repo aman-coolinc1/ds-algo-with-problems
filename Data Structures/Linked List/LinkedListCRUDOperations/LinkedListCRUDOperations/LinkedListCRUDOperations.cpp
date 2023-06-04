@@ -53,3 +53,7 @@ ListNode* delete_node(ListNode* root,ListNode *node) {
 	}
 	return root;
 }
+
+ListNode* update_node(ListNode* root, ListNode *node, int new_val) {
+	return nullptr;
+}
