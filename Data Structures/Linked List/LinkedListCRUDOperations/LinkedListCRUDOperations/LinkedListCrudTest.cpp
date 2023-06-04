@@ -151,5 +151,5 @@ TEST_F(LinkedListUpdateOperationsTest, update_existing_element) {
 }
 
 TEST_F(LinkedListUpdateOperationsTest, update_not_existing_element) {
-		EXPECT_ANY_THROW(update_node(find_value_in_list(root, 6), 5));
+	EXPECT_ANY_THROW(update_node(find_value_in_list(root, 6), 5));
 }
