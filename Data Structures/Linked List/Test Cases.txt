@@ -11,8 +11,7 @@
 11. delete  node in empty list ->  return nullptr, error msg
 12. delete  node in end -> check if node in end is  not node
 13. delete  node if only 1 node in list ->  node should be deleted list becomes empty
-14. delete node after a given node -> check if node after give node is  not previous next node
-15. If given node is nullptr -> delete node at front
-16. search for given value -> return address of node with given value
-17. search for given value which occur after n times -> return address of given value
-18. update value of a given node->error string if not exist, update value if exist, return node 
+14. If given node is nullptr -> delete node at front
+15. search for given value -> return address of node with given value
+16. search for given value which occur after n times -> return address of given value
+17. update value of a given node->error string if not exist, update value if exist, return node 

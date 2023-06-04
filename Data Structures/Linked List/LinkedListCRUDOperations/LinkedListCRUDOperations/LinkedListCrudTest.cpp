@@ -17,6 +17,13 @@ public:
 		}
 	}
 
+	void CreateList(int number_of_nodes) {
+		root = add_node_after(root, create_node(1));
+		for (int i = 2; i <= number_of_nodes; i++) {
+			add_node_after(root, create_node(i));
+		}
+	}
+
 protected:
 	ListNode* root;
 };
@@ -57,10 +64,7 @@ class LinkedListSearchOperationsTest : public LinkedListCRUDOperationsTest {
 public:
 	virtual void SetUp() {
 		LinkedListCRUDOperationsTest::SetUp();
-		root = add_node_after(root, create_node(1));
-		add_node_after(root, create_node(2));
-		add_node_after(root, create_node(3));
-		add_node_after(root, create_node(4));
+		CreateList(4);
 	}
 	virtual void TearDown() {
 		LinkedListCRUDOperationsTest::TearDown();
@@ -91,10 +95,7 @@ class LinkedListDeleteOperationsTest : public LinkedListCRUDOperationsTest {
 public:
 	virtual void SetUp() {
 		LinkedListCRUDOperationsTest::SetUp();
-		root = add_node_after(root, create_node(1));
-		add_node_after(root, create_node(2));
-		add_node_after(root, create_node(3));
-		add_node_after(root, create_node(4));
+		CreateList(4);
 	}
 	virtual void TearDown() {
 		LinkedListCRUDOperationsTest::TearDown();
@@ -130,13 +131,14 @@ TEST_F(LinkedListDeleteOperationsTest, delete_node_in_list_with_1_node) {
 	EXPECT_EQ(single_node, nullptr);
 }
 
+TEST_F(LinkedListDeleteOperationsTest, delete_not_exist_node_in_list) {
+	root = delete_node(root, find_value_in_list(root, 5));
+}
+
 class LinkedListUpdateOperationsTest :public LinkedListCRUDOperationsTest {
 	virtual void SetUp() {
 		LinkedListCRUDOperationsTest::SetUp();
-		root = add_node_after(root, create_node(1));
-		add_node_after(root, create_node(2));
-		add_node_after(root, create_node(3));
-		add_node_after(root, create_node(4));
+		CreateList(4);
 	}
 	virtual void TearDown() {
 		LinkedListCRUDOperationsTest::TearDown();

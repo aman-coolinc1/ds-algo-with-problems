@@ -17,7 +17,7 @@ ListNode* add_node_after(ListNode* root, ListNode* new_node) {
 	if (!root) {
 		return add_node_to_front(root, new_node);
 	}
-	if (new_node == nullptr) {
+	if (!new_node) {
 		throw std::invalid_argument("Adding nullptr to list is not allowed");
 	}
 	new_node->next = root->next;
