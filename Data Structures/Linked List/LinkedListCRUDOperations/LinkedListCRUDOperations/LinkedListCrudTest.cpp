@@ -129,3 +129,20 @@ TEST_F(LinkedListDeleteOperationsTest, delete_node_in_list_with_1_node) {
 	single_node = delete_node(single_node, find_value_in_list(single_node, 1));
 	EXPECT_EQ(single_node, nullptr);
 }
+
+class LinkedListUpdateOperationsTest :public LinkedListCRUDOperationsTest {
+	virtual void SetUp() {
+		LinkedListCRUDOperationsTest::SetUp();
+		root = add_node_after(root, create_node(1));
+		add_node_after(root, create_node(2));
+		add_node_after(root, create_node(3));
+		add_node_after(root, create_node(4));
+	}
+	virtual void TearDown() {
+		LinkedListCRUDOperationsTest::TearDown();
+	}
+};
+
+TEST_F(LinkedListUpdateOperationsTest, update_existing_element) {
+	ListNode* updated_element = update_node(root, find_value_in_list(root,2), 5);
+}
