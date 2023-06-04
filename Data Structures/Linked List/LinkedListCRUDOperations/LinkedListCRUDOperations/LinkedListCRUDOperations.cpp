@@ -54,6 +54,7 @@ ListNode* delete_node(ListNode* root,ListNode *node) {
 	return root;
 }
 
-ListNode* update_node(ListNode* root, ListNode *node, int new_val) {
-	return nullptr;
+ListNode* update_node(ListNode *node, int new_val) {
+	node->data = new_val;
+	return node;
 }

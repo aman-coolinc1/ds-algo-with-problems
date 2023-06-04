@@ -144,6 +144,6 @@ class LinkedListUpdateOperationsTest :public LinkedListCRUDOperationsTest {
 };
 
 TEST_F(LinkedListUpdateOperationsTest, update_existing_element) {
-	ListNode* updated_element = update_node(root, find_value_in_list(root,2), 5);
+	ListNode* updated_element = update_node(find_value_in_list(root,2), 5);
 	EXPECT_EQ(updated_element->data, 5);
 }
