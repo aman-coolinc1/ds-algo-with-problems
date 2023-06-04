@@ -55,6 +55,9 @@ ListNode* delete_node(ListNode* root,ListNode *node) {
 }
 
 ListNode* update_node(ListNode *node, int new_val) {
+	if (!node) {
+		throw std::invalid_argument("node to be updated cannot be null");
+	}
 	node->data = new_val;
 	return node;
 }
