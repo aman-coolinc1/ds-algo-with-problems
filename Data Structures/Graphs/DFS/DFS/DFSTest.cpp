@@ -6,7 +6,7 @@
 class graphTest : public ::testing::Test {
 public:
 	virtual void SetUp() {
-		g = *(new Graph(20));
+		g = *(new Graph(20));	
 	}
 	Graph g;
 };
