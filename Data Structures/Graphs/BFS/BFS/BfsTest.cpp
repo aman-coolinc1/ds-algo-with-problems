@@ -1,9 +1,10 @@
 #include <gtest/gtest.h>
 #include "Bfs.h"
 
+using vector2D = std::vector<std::vector<int>>;
 TEST(BFSTest, EmptyTree) {
 	TreeNode *root = nullptr;
-	std::vector<std::vector<int>> levelOrderTraversal = bfs(root);
+	vector2D levelOrderTraversal = bfs(root);
 	EXPECT_EQ(levelOrderTraversal.size(), 0);
 }
 
@@ -15,55 +16,47 @@ public:
 	TreeNode *root;
 };
 
-TEST_F(BfsTestWithRoot, level1Tree) {
-	std::vector<std::vector<int>> expectedlevelOrderTraversal = { {0} };
-	std::vector<std::vector<int>> levelOrderTraversal = bfs(root);
+void checkBfsOutput(const vector2D &expectedlevelOrderTraversal, const vector2D &levelOrderTraversal) {
 	EXPECT_EQ(levelOrderTraversal.size(), expectedlevelOrderTraversal.size());
 	for (size_t i = 0; i < expectedlevelOrderTraversal.size(); i++)
 		for (size_t j = 0; j < expectedlevelOrderTraversal[i].size(); j++)
 			EXPECT_EQ(expectedlevelOrderTraversal[i][j], levelOrderTraversal[i][j]);
+}
+
+TEST_F(BfsTestWithRoot, level1Tree) {
+	vector2D expectedlevelOrderTraversal = { {0} };
+	vector2D levelOrderTraversal = bfs(root);
+	checkBfsOutput(expectedlevelOrderTraversal, levelOrderTraversal);
 }
 
 TEST_F(BfsTestWithRoot, level2TreeWithLeftChild) {
 	root->left = new TreeNode(1);
-	std::vector<std::vector<int>> expectedlevelOrderTraversal = { {0},{1} };
-	std::vector<std::vector<int>> levelOrderTraversal = bfs(root);
-	EXPECT_EQ(levelOrderTraversal.size(), expectedlevelOrderTraversal.size());
-	for (size_t i = 0; i < expectedlevelOrderTraversal.size(); i++)
-		for (size_t j = 0; j < expectedlevelOrderTraversal[i].size(); j++)
-			EXPECT_EQ(expectedlevelOrderTraversal[i][j], levelOrderTraversal[i][j]);
+	vector2D expectedlevelOrderTraversal = { {0},{1} };
+	vector2D levelOrderTraversal = bfs(root);
+	checkBfsOutput(expectedlevelOrderTraversal, levelOrderTraversal);
 }
 
 TEST_F(BfsTestWithRoot, level2TreeWithRightChild) {
 	root->right = new TreeNode(1);
-	std::vector<std::vector<int>> expectedlevelOrderTraversal = { {0},{1} };
-	std::vector<std::vector<int>> levelOrderTraversal = bfs(root);
-	EXPECT_EQ(levelOrderTraversal.size(), expectedlevelOrderTraversal.size());
-	for (size_t i = 0; i < expectedlevelOrderTraversal.size(); i++)
-		for (size_t j = 0; j < expectedlevelOrderTraversal[i].size(); j++)
-			EXPECT_EQ(expectedlevelOrderTraversal[i][j], levelOrderTraversal[i][j]);
+	vector2D expectedlevelOrderTraversal = { {0},{1} };
+	vector2D levelOrderTraversal = bfs(root);
+	checkBfsOutput(expectedlevelOrderTraversal, levelOrderTraversal);
 }
 
 TEST_F(BfsTestWithRoot, level3TreeWithleftChild) {
 	root->left = new TreeNode(1);
 	root->left->left = new TreeNode(2);
-	std::vector<std::vector<int>> expectedlevelOrderTraversal = { {0},{1},{2} };
-	std::vector<std::vector<int>> levelOrderTraversal = bfs(root);
-	EXPECT_EQ(levelOrderTraversal.size(), expectedlevelOrderTraversal.size());
-	for (size_t i = 0; i < expectedlevelOrderTraversal.size(); i++)
-		for (size_t j = 0; j < expectedlevelOrderTraversal[i].size(); j++)
-			EXPECT_EQ(expectedlevelOrderTraversal[i][j], levelOrderTraversal[i][j]);
+	vector2D expectedlevelOrderTraversal = { {0},{1},{2} };
+	vector2D levelOrderTraversal = bfs(root);
+	checkBfsOutput(expectedlevelOrderTraversal, levelOrderTraversal);
 }
 
 TEST_F(BfsTestWithRoot, level3TreeWithRightChild) {
 	root->right = new TreeNode(1);
 	root->right->right = new TreeNode(2);
-	std::vector<std::vector<int>> expectedlevelOrderTraversal = { {0},{1},{2} };
-	std::vector<std::vector<int>> levelOrderTraversal = bfs(root);
-	EXPECT_EQ(levelOrderTraversal.size(), expectedlevelOrderTraversal.size());
-	for (size_t i = 0; i < expectedlevelOrderTraversal.size(); i++)
-		for(size_t j = 0;j < expectedlevelOrderTraversal[i].size();j++)
-		EXPECT_EQ(expectedlevelOrderTraversal[i][j], levelOrderTraversal[i][j]);
+	vector2D expectedlevelOrderTraversal = { {0},{1},{2} };
+	vector2D levelOrderTraversal = bfs(root);
+	checkBfsOutput(expectedlevelOrderTraversal, levelOrderTraversal);
 }
 
 TEST_F(BfsTestWithRoot, level3TreeWithLeftRightChild) {
@@ -71,10 +64,8 @@ TEST_F(BfsTestWithRoot, level3TreeWithLeftRightChild) {
 	root->right = new TreeNode(2);
 	root->left->right = new TreeNode(3);
 	root->right->left = new TreeNode(4);
-	std::vector<std::vector<int>> expectedlevelOrderTraversal = { {0},{1,2},{3,4} };
-	std::vector<std::vector<int>> levelOrderTraversal = bfs(root);
-	EXPECT_EQ(levelOrderTraversal.size(), expectedlevelOrderTraversal.size());
-	for (size_t i = 0; i < expectedlevelOrderTraversal.size(); i++)
-		EXPECT_EQ(expectedlevelOrderTraversal[i], levelOrderTraversal[i]);
+	vector2D expectedlevelOrderTraversal = { {0},{1,2},{3,4} };
+	vector2D levelOrderTraversal = bfs(root);
+	checkBfsOutput(expectedlevelOrderTraversal, levelOrderTraversal);
 }
 
